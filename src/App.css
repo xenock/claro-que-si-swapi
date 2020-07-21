@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 10vh;
+  pointer-events: none;
+  animation: App-logo-float infinite 3s ease;
+}
+
+.App-header {
+  min-height: 10vh;
+  background-color: $main-color;
+  padding: $l;
+}
+
+@keyframes App-logo-float {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
