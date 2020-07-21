@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import loaderReducer from './slices/loaderSlice'
+import starshipsReducer from './slices/starshipsSlice'
 
 export default configureStore({
   reducer: {
-    loader: loaderReducer
+    starships: starshipsReducer
   }
 })
