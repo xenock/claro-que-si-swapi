@@ -2,10 +2,12 @@ import React from 'react'
 import { filteredStarships } from '../app/slices/starshipsSlice'
 import { useSelector } from 'react-redux'
 
+import Spinner from './Spinner'
+
 const Table = ({ fields }) => {
   const starships = useSelector(filteredStarships)
 
-  return (
+  return starships.length ? (
     <table>
       <thead>
         <tr>
@@ -15,7 +17,7 @@ const Table = ({ fields }) => {
         </tr>
       </thead>
       <tbody>
-        {starships.length &&
+        {
          starships.map(starship => (
            <tr key={Math.random()}>
              {fields.map(field => (
@@ -25,7 +27,7 @@ const Table = ({ fields }) => {
          ))}
       </tbody>
     </table>
-  )
+  ) : <Spinner />
 }
 
 export default Table
