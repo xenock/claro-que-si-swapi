@@ -1,60 +1,78 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import {
-  rawStarships,
   filteredStarships,
+  sortBy,
+  setOrderFieldName,
+  ascendingOrder,
+  toggleOrder,
   getStarshipsAPI
 } from './app/slices/starshipsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 import './App.css'
 
-import Button from './components/Button'
+import Toggle from './components/Toggle'
+import Select from './components/Select'
 
 function App () {
-  const starships = useSelector(rawStarships)
+  const starships = useSelector(filteredStarships)
+  const isOn = useSelector(ascendingOrder)
   const dispatch = useDispatch()
+
+  const fields = [
+    'name',
+    'model',
+    'manufacturer',
+    'cost_in_credits',
+    'length',
+    'max_atmosphering_speed',
+    'crew',
+    'passengers',
+    'cargo',
+    'consumables',
+    'hyperdrive_rating',
+    'MGLT',
+    'starship_class'
+  ]
 
   useEffect(() => {
     dispatch(getStarshipsAPI())
-  }, [])
+  }, [dispatch])
 
   return (
     <main className='App'>
+      <aside>
+        <h2>Filters</h2>
+        <Select
+          fields={fields}
+          onChangeHandler={selectedField => {
+            dispatch(setOrderFieldName(selectedField))
+            dispatch(sortBy())
+          }}
+        />
+        <Toggle
+          isOn={isOn}
+          onChangeHandler={() => {
+            dispatch(toggleOrder())
+            dispatch(sortBy())
+          }}
+        />
+      </aside>
       <table>
         <thead>
           <tr>
-            <td>Name</td>
-            <td>Model</td>
-            <td>Manufacturer</td>
-            <td>Cost in credits</td>
-            <td>Length</td>
-            <td>Max atmosphering speed</td>
-            <td>Crew</td>
-            <td>Passengers</td>
-            <td>Cargo</td>
-            <td>Consumables</td>
-            <td>Hiperdrive rating</td>
-            <td>MGLT</td>
-            <td>Starship Class</td>
+            {fields.map(field => (
+              <td key={Math.random()}>{field.replace(/_/gi, ' ')}</td>
+            ))}
           </tr>
         </thead>
         <tbody>
           {starships.length &&
             starships.map(starship => (
-              <tr>
-                <td>{starship.name}</td>
-                <td>{starship.model}</td>
-                <td>{starship.manufacturer}</td>
-                <td>{starship.cost_in_credits}</td>
-                <td>{starship.length}</td>
-                <td>{starship.max_atmosphering_speed}</td>
-                <td>{starship.crew}</td>
-                <td>{starship.passengers}</td>
-                <td>{starship.cargo}</td>
-                <td>{starship.consumables}</td>
-                <td>{starship.hyperdrive_rating}</td>
-                <td>{starship.MGLT}</td>
-                <td>{starship.starship_class}</td>
+              <tr key={Math.random()}>
+                {fields.map(field => (
+                  <td key={Math.random()}>{starship[field]}</td>
+                ))}
               </tr>
             ))}
         </tbody>
