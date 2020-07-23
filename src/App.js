@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
-import { filteredStarships, getStarshipsAPI } from './app/slices/starshipsSlice'
-import { useSelector, useDispatch } from 'react-redux'
+import { getStarshipsAPI } from './app/slices/starshipsSlice'
+import { useDispatch } from 'react-redux'
 
 import './App.css'
 
 import Filters from './components/Filters'
+import Table from './components/Table'
 
 function App () {
-  const starships = useSelector(filteredStarships)
   const dispatch = useDispatch()
 
   const fields = [
@@ -33,25 +33,7 @@ function App () {
   return (
     <main className='App'>
       <Filters fields={fields} />
-      <table>
-        <thead>
-          <tr>
-            {fields.map(field => (
-              <td key={Math.random()}>{field.replace(/_/gi, ' ')}</td>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {starships.length &&
-            starships.map(starship => (
-              <tr key={Math.random()}>
-                {fields.map(field => (
-                  <td key={Math.random()}>{starship[field]}</td>
-                ))}
-              </tr>
-            ))}
-        </tbody>
-      </table>
+      <Table fields={fields}/>
     </main>
   )
 }
