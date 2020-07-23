@@ -1,22 +1,13 @@
 import React, { useEffect } from 'react'
-import {
-  filteredStarships,
-  sortBy,
-  setOrderFieldName,
-  ascendingOrder,
-  toggleOrder,
-  getStarshipsAPI
-} from './app/slices/starshipsSlice'
+import { filteredStarships, getStarshipsAPI } from './app/slices/starshipsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 import './App.css'
 
-import Toggle from './components/Toggle'
-import Select from './components/Select'
+import Filters from './components/Filters'
 
 function App () {
   const starships = useSelector(filteredStarships)
-  const isOn = useSelector(ascendingOrder)
   const dispatch = useDispatch()
 
   const fields = [
@@ -41,23 +32,7 @@ function App () {
 
   return (
     <main className='App'>
-      <aside>
-        <h2>Filters</h2>
-        <Select
-          fields={fields}
-          onChangeHandler={selectedField => {
-            dispatch(setOrderFieldName(selectedField))
-            dispatch(sortBy())
-          }}
-        />
-        <Toggle
-          isOn={isOn}
-          onChangeHandler={() => {
-            dispatch(toggleOrder())
-            dispatch(sortBy())
-          }}
-        />
-      </aside>
+      <Filters fields={fields} />
       <table>
         <thead>
           <tr>
