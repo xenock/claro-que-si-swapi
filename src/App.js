@@ -33,7 +33,7 @@ function App () {
   return (
     <main className='App'>
       <Filters fields={fields} />
-      <Table fields={fields}/>
+      <Table fields={fields} />
     </main>
   )
 }

@@ -5,13 +5,14 @@ const Select = ({ fields, onChangeHandler }) => {
     onChangeHandler(fields[0])
   }, [])
 
-  const handleChange = event => {
-    onChangeHandler(event.target.value)
-  }
-
   return (
     fields.length && (
-      <select name='select' onChange={handleChange}>
+      <select
+        name='select'
+        onChange={event => {
+          onChangeHandler(event.target.value)
+        }}
+      >
         {fields.map(field => (
           <option value={field}>{field.replace(/_/gi, ' ')}</option>
         ))}

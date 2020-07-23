@@ -17,17 +17,18 @@ const Table = ({ fields }) => {
         </tr>
       </thead>
       <tbody>
-        {
-         starships.map(starship => (
-           <tr key={Math.random()}>
-             {fields.map(field => (
-               <td key={Math.random()}>{starship[field]}</td>
-             ))}
-           </tr>
-         ))}
+        {starships.map(starship => (
+          <tr key={Math.random()}>
+            {fields.map(field => (
+              <td key={Math.random()}>{starship[field]}</td>
+            ))}
+          </tr>
+        ))}
       </tbody>
     </table>
-  ) : <Spinner />
+  ) : (
+    <Spinner />
+  )
 }
 
 export default Table

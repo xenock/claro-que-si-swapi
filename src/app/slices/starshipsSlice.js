@@ -10,6 +10,21 @@ export const getStarshipsAPI = createAsyncThunk(
     return json.results
   }
 )
+const fields = [
+  'name',
+  'model',
+  'manufacturer',
+  'cost_in_credits',
+  'length',
+  'max_atmosphering_speed',
+  'crew',
+  'passengers',
+  'cargo',
+  'consumables',
+  'hyperdrive_rating',
+  'MGLT',
+  'starship_class'
+]
 
 export const starshipsSlice = createSlice({
   name: 'starships',
@@ -41,6 +56,22 @@ export const starshipsSlice = createSlice({
         ...state,
         orderFieldName: payload
       }
+    },
+    searchByTerm: (state, { payload }) => {
+      const result = fields.reduce(
+        (acc, filter) => [
+          ...acc,
+          ...state.rawStarships.filter(
+            object => object[filter] && object[filter].includes(payload)
+          )
+        ],
+        []
+      )
+
+      return {
+        ...state,
+        filteredStarships: [...new Set(result)]
+      }
     }
   },
   extraReducers: {
@@ -54,7 +85,12 @@ export const starshipsSlice = createSlice({
   }
 })
 
-export const { sortBy, toggleOrder, setOrderFieldName } = starshipsSlice.actions
+export const {
+  sortBy,
+  toggleOrder,
+  setOrderFieldName,
+  searchByTerm
+} = starshipsSlice.actions
 
 export const filteredStarships = state => state.starships.filteredStarships
 export const rawStarships = state => state.starships.rawStarships

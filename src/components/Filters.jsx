@@ -3,11 +3,13 @@ import {
   sortBy,
   setOrderFieldName,
   ascendingOrder,
-  toggleOrder
+  toggleOrder,
+  searchByTerm
 } from '../app/slices/starshipsSlice'
 
 import Select from './Select'
 import Toggle from './Toggle'
+import Searcher from './Searcher'
 
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -30,6 +32,11 @@ const Filters = ({ fields }) => {
         onChangeHandler={() => {
           dispatch(toggleOrder())
           dispatch(sortBy())
+        }}
+      />
+      <Searcher
+        onChangeHandler={searchTerm => {
+          dispatch(searchByTerm(searchTerm))
         }}
       />
     </aside>
