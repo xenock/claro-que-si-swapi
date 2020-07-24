@@ -10,21 +10,6 @@ export const getStarshipsAPI = createAsyncThunk(
     return json.results
   }
 )
-const fields = [
-  'name',
-  'model',
-  'manufacturer',
-  'cost_in_credits',
-  'length',
-  'max_atmosphering_speed',
-  'crew',
-  'passengers',
-  'cargo',
-  'consumables',
-  'hyperdrive_rating',
-  'MGLT',
-  'starship_class'
-]
 
 export const starshipsSlice = createSlice({
   name: 'starships',
@@ -32,7 +17,8 @@ export const starshipsSlice = createSlice({
     rawStarships: [],
     filteredStarships: [],
     ascendingOrder: true,
-    orderFieldName: ''
+    orderFieldName: '',
+    fields: []
   },
   reducers: {
     sortBy: state => {
@@ -58,7 +44,7 @@ export const starshipsSlice = createSlice({
       }
     },
     searchByTerm: (state, { payload }) => {
-      const result = fields.reduce(
+      const result = state.fields.reduce(
         (acc, filter) => [
           ...acc,
           ...state.rawStarships.filter(
@@ -71,6 +57,14 @@ export const starshipsSlice = createSlice({
       return {
         ...state,
         filteredStarships: [...new Set(result)]
+      }
+    },
+    syncSelectedFields: (state, { payload: { field, checked } }) => {
+      return {
+        ...state,
+        fields: checked
+          ? [...new Set([...state.fields, field])]
+          : state.fields.filter(campo => field !== campo)
       }
     }
   },
@@ -86,14 +80,16 @@ export const starshipsSlice = createSlice({
 })
 
 export const {
-  sortBy,
-  toggleOrder,
+  searchByTerm,
   setOrderFieldName,
-  searchByTerm
+  sortBy,
+  syncSelectedFields,
+  toggleOrder
 } = starshipsSlice.actions
 
 export const filteredStarships = state => state.starships.filteredStarships
 export const rawStarships = state => state.starships.rawStarships
 export const ascendingOrder = state => state.starships.ascendingOrder
+export const emptySearchFields = state => state.starships.fields.length === 0
 
 export default starshipsSlice.reducer

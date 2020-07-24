@@ -14,7 +14,9 @@ const Select = ({ fields, onChangeHandler }) => {
         }}
       >
         {fields.map(field => (
-          <option value={field}>{field.replace(/_/gi, ' ')}</option>
+          <option key={Math.random()} value={field}>
+            {field.replace(/_/gi, ' ')}
+          </option>
         ))}
       </select>
     )
