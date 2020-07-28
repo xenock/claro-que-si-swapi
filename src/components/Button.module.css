@@ -1,19 +1,18 @@
 .button {
+  font-family: 'Press Start 2P';
   padding: 20px 60px;
   margin: 10px;
   outline: none;
-  background-color: #27ae60;
+  background-color: var(--brown-dark);
   border: none;
-  border-radius: 5px;
-  box-shadow: 0 9px #95a5a6;
+  color: var(--white)
 }
 
 .button:hover {
-  background-color: #2ecc71;
+  background-color: var(--brown-light);
 }
 
 .button:active {
-  background-color: #2ecc71;
-  box-shadow: 0 5px #95a5a6;
+  background-color: var(--black-light);
   transform: translateY(4px);
 }
