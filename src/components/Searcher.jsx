@@ -11,10 +11,10 @@ const Searcher = ({ onChangeHandler }) => {
     <>
       <label htmlFor='search-input'>{message}</label>
       <input
-        onChange={event => onChangeHandler(event.target.value)}
-        name='searcher'
         disabled={nonSelectedSearchFields}
         id='search-input'
+        name='searcher'
+        onChange={event => onChangeHandler(event.target.value)}
         placeholder={message}
         type='text'
       />

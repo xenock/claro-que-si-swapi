@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react'
-import { getStarshipsAPI } from './app/slices/starshipsSlice'
-import { useDispatch } from 'react-redux'
+import { getStarshipsAPI, selectedStarship } from './app/slices/starshipsSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 import './App.css'
 
 import Filters from './components/Filters'
 import Table from './components/Table'
+import StarshipViewer from './components/StarshipViewer'
 
 function App () {
   const dispatch = useDispatch()
+  const starship = useSelector(selectedStarship)
 
   const fields = [
     'name',
@@ -32,8 +34,14 @@ function App () {
 
   return (
     <main className='App'>
-      <Filters fields={fields} />
-      <Table fields={fields} />
+      {!starship ? (
+        <>
+          <Filters fields={fields} />
+          <Table fields={fields} />
+        </>
+      ) : (
+        <StarshipViewer fields={fields} />
+      )}
     </main>
   )
 }

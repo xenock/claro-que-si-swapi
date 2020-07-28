@@ -1,11 +1,12 @@
 import React from 'react'
-import { filteredStarships } from '../app/slices/starshipsSlice'
-import { useSelector } from 'react-redux'
+import { filteredStarships, selectStarship } from '../app/slices/starshipsSlice'
+import { useSelector, useDispatch } from 'react-redux'
 
 import Spinner from './Spinner'
 
 const Table = ({ fields }) => {
   const starships = useSelector(filteredStarships)
+  const dispatch = useDispatch()
 
   return starships.length ? (
     <table>
@@ -18,7 +19,10 @@ const Table = ({ fields }) => {
       </thead>
       <tbody>
         {starships.map(starship => (
-          <tr key={Math.random()}>
+          <tr
+            onClick={_ => dispatch(selectStarship(starship.url))}
+            key={Math.random()}
+          >
             {fields.map(field => (
               <td key={Math.random()}>{starship[field]}</td>
             ))}

@@ -18,7 +18,8 @@ export const starshipsSlice = createSlice({
     filteredStarships: [],
     ascendingOrder: true,
     orderFieldName: '',
-    fields: []
+    fields: [],
+    selectedStarship: null
   },
   reducers: {
     sortBy: state => {
@@ -66,6 +67,20 @@ export const starshipsSlice = createSlice({
           ? [...new Set([...state.fields, field])]
           : state.fields.filter(campo => field !== campo)
       }
+    },
+    selectStarship: (state, { payload: starshipUrl }) => {
+      return {
+        ...state,
+        selectedStarship: state.rawStarships.find(
+          starship => starship.url === starshipUrl
+        )
+      }
+    },
+    deSelectStarship: state => {
+      return {
+        ...state,
+        selectedStarship: null
+      }
     }
   },
   extraReducers: {
@@ -84,12 +99,15 @@ export const {
   setOrderFieldName,
   sortBy,
   syncSelectedFields,
-  toggleOrder
+  toggleOrder,
+  selectStarship,
+  deSelectStarship
 } = starshipsSlice.actions
 
 export const filteredStarships = state => state.starships.filteredStarships
 export const rawStarships = state => state.starships.rawStarships
 export const ascendingOrder = state => state.starships.ascendingOrder
 export const emptySearchFields = state => state.starships.fields.length === 0
+export const selectedStarship = state => state.starships.selectedStarship
 
 export default starshipsSlice.reducer
