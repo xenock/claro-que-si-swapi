@@ -10,7 +10,9 @@ const Searcher = ({ onChangeHandler }) => {
     : 'Introduce your term to find'
   return (
     <>
-      <label className={style.label} htmlFor='search-input'>{message}</label>
+      <label className={style.label} htmlFor='search-input'>
+        {message}
+      </label>
       <input
         className={style.input}
         disabled={nonSelectedSearchFields}

@@ -12,10 +12,12 @@ const Table = ({ fields }) => {
 
   return starships.length ? (
     <table className={styles.table}>
-      <thead>
-        <tr>
+      <thead className={styles.thead}>
+        <tr className={styles.tr}>
           {fields.map(field => (
-            <td key={Math.random()}>{field.replace(/_/gi, ' ')}</td>
+            <td className={styles.td} key={Math.random()}>
+              {field.replace(/_/gi, ' ')}
+            </td>
           ))}
         </tr>
       </thead>
@@ -27,7 +29,9 @@ const Table = ({ fields }) => {
             key={Math.random()}
           >
             {fields.map(field => (
-              <td key={Math.random()}>{starship[field]}</td>
+              <td className={styles.td} data-label={field} key={Math.random()}>
+                {starship[field]}
+              </td>
             ))}
           </tr>
         ))}

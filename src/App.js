@@ -16,14 +16,10 @@ function App () {
 
   const fields = [
     'name',
-    'model',
-    'manufacturer',
     'cost_in_credits',
     'length',
-    'max_atmosphering_speed',
     'crew',
     'passengers',
-    'cargo',
     'consumables',
     'hyperdrive_rating',
     'MGLT',
