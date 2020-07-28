@@ -2,6 +2,8 @@ import React from 'react'
 import { filteredStarships, selectStarship } from '../app/slices/starshipsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
+import styles from './Table.module.css'
+
 import Spinner from './Spinner'
 
 const Table = ({ fields }) => {
@@ -9,7 +11,7 @@ const Table = ({ fields }) => {
   const dispatch = useDispatch()
 
   return starships.length ? (
-    <table>
+    <table className={styles.table}>
       <thead>
         <tr>
           {fields.map(field => (
@@ -20,6 +22,7 @@ const Table = ({ fields }) => {
       <tbody>
         {starships.map(starship => (
           <tr
+            className={styles.tr}
             onClick={_ => dispatch(selectStarship(starship.url))}
             key={Math.random()}
           >

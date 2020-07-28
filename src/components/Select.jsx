@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import styles from './Select.module.css'
 
 const Select = ({ fields, onChangeHandler }) => {
   useEffect(() => {

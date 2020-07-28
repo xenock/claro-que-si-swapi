@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { getStarshipsAPI, selectedStarship } from './app/slices/starshipsSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
-import './App.css'
+import styles from './App.module.css'
 
 import Filters from './components/Filters'
 import Table from './components/Table'
@@ -11,6 +11,8 @@ import StarshipViewer from './components/StarshipViewer'
 function App () {
   const dispatch = useDispatch()
   const starship = useSelector(selectedStarship)
+
+  console.log(starship)
 
   const fields = [
     'name',
@@ -33,7 +35,8 @@ function App () {
   }, [dispatch])
 
   return (
-    <main className='App'>
+    <main className={styles.app}>
+      <h1>Star Wars Starship App</h1>
       {!starship ? (
         <>
           <Filters fields={fields} />

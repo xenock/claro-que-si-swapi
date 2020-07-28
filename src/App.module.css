@@ -1,0 +1,26 @@
+:root {
+  --black-dark: #0a0908;
+  --black-light: #22333b;
+  --white: #f2f4f3;
+  --brown-light: #a9927d;
+  --brown-dark: #5e503f;
+
+  --spacer-xxxs: 1px;
+  --spacer-xxs: 2px;
+  --spacer-xs: 3px;
+  --spacer-s: 5px;
+  --spacer-m: 8px;
+  --spacer-l: 13px;
+  --spacer-xl: 21px;
+  --spacer-xxl: 34px;
+  --spacer-xxxl: 55px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.app {
+  text-align: center;
+  font-family: 'Press Start 2P';
+  background-color: var(--black-dark);
+  color: var(--white);
+}

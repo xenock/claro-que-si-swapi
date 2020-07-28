@@ -1,0 +1,9 @@
+.table {
+  overflow-x: auto;
+  background-color: var(--black-dark);
+}
+
+.tr:hover {
+  background-color: var(--black-light);
+  cursor: pointer;
+}
