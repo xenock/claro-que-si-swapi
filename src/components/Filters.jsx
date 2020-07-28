@@ -24,37 +24,39 @@ const Filters = ({ fields }) => {
   return (
     <aside>
       <h2>Filters</h2>
-      <fieldset className={styles.fieldset}>
-        <legend>Find by field with order</legend>
-        <Select
-          fields={fields}
-          onChangeHandler={selectedField => {
-            dispatch(setOrderFieldName(selectedField))
-            dispatch(sortBy())
-          }}
-        />
-        <Toggle
-          isOn={isOn}
-          onChangeHandler={() => {
-            dispatch(toggleOrder())
-            dispatch(sortBy())
-          }}
-        />
-      </fieldset>
-      <fieldset className={styles.fieldset}>
-        <legend>Select one field at least and find a term on them</legend>
-        <Searcher
-          onChangeHandler={searchTerm => {
-            dispatch(searchByTerm(searchTerm))
-          }}
-        />
-        <FieldsSelector
-          fields={fields}
-          onChangeHandler={selectedField => {
-            dispatch(syncSelectedFields(selectedField))
-          }}
-        />
-      </fieldset>
+      <div className={styles.div}>
+        <fieldset className={styles.fieldset}>
+          <legend>Find by field with order</legend>
+          <Select
+            fields={fields}
+            onChangeHandler={selectedField => {
+              dispatch(setOrderFieldName(selectedField))
+              dispatch(sortBy())
+            }}
+          />
+          <Toggle
+            isOn={isOn}
+            onChangeHandler={() => {
+              dispatch(toggleOrder())
+              dispatch(sortBy())
+            }}
+          />
+        </fieldset>
+        <fieldset className={styles.fieldset}>
+          <legend>Select one field at least and find a term on them</legend>
+          <Searcher
+            onChangeHandler={searchTerm => {
+              dispatch(searchByTerm(searchTerm))
+            }}
+          />
+          <FieldsSelector
+            fields={fields}
+            onChangeHandler={selectedField => {
+              dispatch(syncSelectedFields(selectedField))
+            }}
+          />
+        </fieldset>
+      </div>
     </aside>
   )
 }

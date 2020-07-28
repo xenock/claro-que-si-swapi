@@ -10,7 +10,11 @@ import styles from './StarshipViewer.module.css'
 
 import Button from './Button'
 
-const Link = ({ url }) => <a href={url} target="_blank" rel="noopener noreferrer">{url}</a>
+const Link = ({ url }) => (
+  <a href={url} target='_blank' rel='noopener noreferrer'>
+    {url}
+  </a>
+)
 
 const UrlPainter = ({ starship, field }) => {
   return Array.isArray(starship[field]) && starship[field].length ? (

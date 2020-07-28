@@ -1,3 +1,13 @@
 .fieldset {
   margin-top: var(--spacer-l);
 }
+
+@media (min-width: 1366px) {
+  .div {
+    display: flex;
+  }
+
+  .fieldset:last-child {
+    flex: 1 0 auto;
+  }
+}
