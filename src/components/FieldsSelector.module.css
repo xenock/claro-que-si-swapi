@@ -1,3 +1,17 @@
+.fieldset {
+  margin-top: var(--spacer-m);
+}
+
+.fieldset:last-child {
+  text-align: left;
+}
+
 .div {
   margin-top: 10px;
+}
+
+@media (min-width: 1366px) {
+  .fieldset:last-child {
+    columns: 3;
+  }
 }

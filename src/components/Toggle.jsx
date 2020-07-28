@@ -3,7 +3,7 @@ import styles from './Toggle.module.css'
 
 const Toggle = ({ isOn, onChangeHandler }) => {
   return (
-    <>
+    <div className={styles.block}>
       <label className={styles.switch}>
         <input
           className={styles.input}
@@ -14,7 +14,7 @@ const Toggle = ({ isOn, onChangeHandler }) => {
         <span className={styles.slider}></span>
       </label>
       <p> {isOn ? 'ascending' : 'descending'} </p>
-    </>
+    </div>
   )
 }
 

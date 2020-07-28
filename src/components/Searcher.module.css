@@ -1,0 +1,13 @@
+.label {
+  display: block;
+  margin-top: var(--spacer-m);
+}
+
+.input {
+  border-radius: 0;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P';
+  margin-top: var(--spacer-m);
+  width: 100%;
+  padding: var(--spacer-s);
+}

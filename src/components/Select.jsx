@@ -9,6 +9,7 @@ const Select = ({ fields, onChangeHandler }) => {
   return (
     fields.length && (
       <select
+        className={styles.select}
         name='select'
         onChange={event => {
           onChangeHandler(event.target.value)

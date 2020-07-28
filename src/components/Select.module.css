@@ -1,0 +1,14 @@
+.select {
+  appearance: none;
+  padding: var(--spacer-s);
+  font-family: 'Press Start 2P';
+  display: block;
+  width: 100%;
+  margin-top: var(--spacer-m);
+}
+
+@media (min-width: 1366px) {
+  .select {
+    margin-top: var(--spacer-xxl);
+  }
+}

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { emptySearchFields } from '../app/slices/starshipsSlice'
+import style from './Searcher.module.css'
 
 const Searcher = ({ onChangeHandler }) => {
   const nonSelectedSearchFields = useSelector(emptySearchFields)
@@ -9,8 +10,9 @@ const Searcher = ({ onChangeHandler }) => {
     : 'Introduce your term to find'
   return (
     <>
-      <label htmlFor='search-input'>{message}</label>
+      <label className={style.label} htmlFor='search-input'>{message}</label>
       <input
+        className={style.input}
         disabled={nonSelectedSearchFields}
         id='search-input'
         name='searcher'
