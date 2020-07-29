@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Filters component 1`] = `
+<div>
+  <aside>
+    <h2>
+      Filters
+    </h2>
+    <div
+      class="div"
+    >
+      <fieldset
+        class="fieldset"
+      >
+        <legend>
+          Find by field with order
+        </legend>
+        <select
+          class="select"
+          name="select"
+        >
+          <option
+            value="name"
+          >
+            name
+          </option>
+        </select>
+        <div
+          class="block"
+        >
+          <label
+            class="switch"
+          >
+            <input
+              checked=""
+              class="input"
+              type="checkbox"
+            />
+            <span
+              class="slider"
+            />
+          </label>
+          <p>
+             
+            ascending
+             
+          </p>
+        </div>
+      </fieldset>
+      <fieldset
+        class="fieldset"
+      >
+        <legend>
+          Select one field at least and find a term on them
+        </legend>
+        <label
+          class="label"
+          for="search-input"
+        >
+          Select one field at least
+        </label>
+        <input
+          class="input"
+          disabled=""
+          id="search-input"
+          name="searcher"
+          placeholder="Select one field at least"
+          type="text"
+        />
+        <fieldset
+          class="fieldset"
+        >
+          <div
+            class="div"
+          >
+            <label
+              class="label"
+              for="name-field"
+            >
+              name
+            </label>
+            <input
+              class="input"
+              id="name-field"
+              name="name"
+              type="checkbox"
+            />
+          </div>
+        </fieldset>
+      </fieldset>
+    </div>
+  </aside>
+</div>
+`;
