@@ -12,8 +12,6 @@ function App () {
   const dispatch = useDispatch()
   const starship = useSelector(selectedStarship)
 
-  console.log(starship)
-
   const fields = [
     'name',
     'cost_in_credits',
