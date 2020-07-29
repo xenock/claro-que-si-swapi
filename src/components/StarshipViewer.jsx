@@ -29,7 +29,7 @@ const UrlPainter = ({ starship, field }) => {
   )
 }
 
-const StarshipViewer = ({ fields }) => {
+const StarshipViewer = ({ fields, extendedFields }) => {
   const starship = useSelector(selectedStarship)
   const dispatch = useDispatch()
 
@@ -44,8 +44,8 @@ const StarshipViewer = ({ fields }) => {
       >
         Back to list
       </Button>
-      <table>
-        {fields.map(field => (
+      <table className={styles.table}>
+        {[...fields, ...extendedFields].map(field => (
           <tr key={Math.random()}>
             <td className={styles.td}>{field.replace(/_/gi, ' ')}</td>
             <td className={styles.td}>{starship[field]}</td>
