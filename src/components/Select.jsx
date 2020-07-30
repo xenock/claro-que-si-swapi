@@ -4,7 +4,7 @@ import styles from './Select.module.css'
 const Select = ({ fields, onChangeHandler }) => {
   useEffect(() => {
     onChangeHandler(fields[0])
-  }, [])
+  }, [fields, onChangeHandler])
 
   return (
     fields.length && (
