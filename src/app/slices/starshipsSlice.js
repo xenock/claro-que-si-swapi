@@ -1,11 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 const url = 'https://swapi.dev/api/starships'
+const requestConfig = {
+  method: 'GET',
+  headers: new Headers(),
+  mode: 'cors',
+  cache: 'default'
+}
 
 export const getStarshipsAPI = createAsyncThunk(
   'starships/getStarshipsAPI',
   async () => {
-    const response = await fetch(url)
+    const response = await fetch(url, requestConfig)
     const json = await response.json()
     return json.results
   }
