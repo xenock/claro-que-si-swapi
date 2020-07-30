@@ -45,20 +45,22 @@ const StarshipViewer = ({ fields, extendedFields }) => {
         Back to list
       </Button>
       <table className={styles.table}>
-        {[...fields, ...extendedFields].map(field => (
-          <tr key={Math.random()}>
-            <td className={styles.td}>{field.replace(/_/gi, ' ')}</td>
-            <td className={styles.td}>{starship[field]}</td>
-          </tr>
-        ))}
-        {additionalFields.map(field => (
-          <tr key={Math.random()}>
-            <td className={styles.td}>{field.replace(/_/gi, ' ')}</td>
-            <td className={styles.td}>
-              <UrlPainter starship={starship} field={field} />
-            </td>
-          </tr>
-        ))}
+        <tbody>
+          {[...fields, ...extendedFields].map((field, ix) => (
+            <tr key={ix}>
+              <td className={styles.td}>{field.replace(/_/gi, ' ')}</td>
+              <td className={styles.td}>{starship[field]}</td>
+            </tr>
+          ))}
+          {additionalFields.map((field, ix) => (
+            <tr key={ix}>
+              <td className={styles.td}>{field.replace(/_/gi, ' ')}</td>
+              <td className={styles.td}>
+                <UrlPainter starship={starship} field={field} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </>
   )

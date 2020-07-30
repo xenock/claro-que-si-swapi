@@ -14,22 +14,22 @@ const Table = ({ fields }) => {
     <table className={styles.table}>
       <thead className={styles.thead}>
         <tr className={styles.tr}>
-          {fields.map(field => (
-            <td className={styles.td} key={Math.random()}>
+          {fields.map((field, ix) => (
+            <td className={styles.td} key={ix}>
               {field.replace(/_/gi, ' ')}
             </td>
           ))}
         </tr>
       </thead>
       <tbody>
-        {starships.map(starship => (
+        {starships.map((starship, ix) => (
           <tr
             className={styles.tr}
             onClick={_ => dispatch(selectStarship(starship.url))}
-            key={Math.random()}
+            key={ix}
           >
-            {fields.map(field => (
-              <td className={styles.td} data-label={field} key={Math.random()}>
+            {fields.map((field, ix) => (
+              <td className={styles.td} data-label={field} key={ix}>
                 {starship[field]}
               </td>
             ))}

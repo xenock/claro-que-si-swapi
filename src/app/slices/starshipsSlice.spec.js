@@ -1,7 +1,7 @@
 import reducer, {
   searchByTerm,
   setOrderFieldName,
-  toggleOrder,
+  toggleOrder
 } from './starshipsSlice'
 
 import {

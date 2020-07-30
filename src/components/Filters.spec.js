@@ -6,12 +6,10 @@ import store from '../app/store'
 import Filters from './Filters'
 
 test('renders Filters component', () => {
-  const fields = [
-    'name'
-  ]
+  const fields = ['name']
   const { getByText, getByPlaceholderText, container } = render(
     <Provider store={store}>
-      <Filters fields={fields}/>
+      <Filters fields={fields} />
     </Provider>
   )
 

@@ -1,5 +1,5 @@
 .table {
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -10,4 +10,10 @@
 
 .td + .td {
   text-align: right;
+}
+
+@media (min-width: 1366px) {
+  .table {
+    width: 60%;
+  }
 }

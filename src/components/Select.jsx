@@ -15,8 +15,8 @@ const Select = ({ fields, onChangeHandler }) => {
           onChangeHandler(event.target.value)
         }}
       >
-        {fields.map(field => (
-          <option key={Math.random()} value={field}>
+        {fields.map((field, ix) => (
+          <option key={ix} value={field}>
             {field.replace(/_/gi, ' ')}
           </option>
         ))}
